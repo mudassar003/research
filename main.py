@@ -1,15 +1,17 @@
-from agents import Agent
+from my_agents.code_analyser import code_analyser
 from agents import Runner
 import asyncio
 from dotenv import load_dotenv
-import os
-from agents import code_analyser
 
 load_dotenv()
 
 async def main():
-      result = await Runner.run(code_analyser, "What is the capital of France?")
-      print(result.final_output)
+    file_path = "sample.py"
+    result = await Runner.run(
+        starting_agent=code_analyser,
+        input=f"read_source_file file_path='{file_path}' and give review"
+    )
+    print(result.final_output)
 
 if __name__ == "__main__":
     asyncio.run(main())
