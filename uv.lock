@@ -113,6 +113,15 @@ wheels = [
 ]
 
 [[package]]
+name = "graphviz"
+version = "0.20.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fa/83/5a40d19b8347f017e417710907f824915fba411a9befd092e52746b63e9f/graphviz-0.20.3.zip", hash = "sha256:09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d", size = 256455, upload-time = "2024-03-21T07:50:45.772Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/00/be/d59db2d1d52697c6adc9eacaf50e8965b6345cc143f671e1ed068818d5cf/graphviz-0.20.3-py3-none-any.whl", hash = "sha256:81f848f2904515d8cd359cc611faba817598d2feaac4027b266aa3eda7b3dde5", size = 47126, upload-time = "2024-03-21T07:50:43.091Z" },
+]
+
+[[package]]
 name = "griffe"
 version = "1.7.3"
 source = { registry = "https://pypi.org/simple" }
@@ -296,6 +305,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/c6/72/bfa64eaa006d78e6480a4463267a55c31920fdcca1f3ebb331ac1217f598/openai_agents-0.0.17-py3-none-any.whl", hash = "sha256:924e0be145b42fb8984e35ab9d14e4948a2251c3b122a02ca989b223e4d39c27", size = 121886, upload-time = "2025-06-04T02:37:54.351Z" },
 ]
 
+[package.optional-dependencies]
+viz = [
+    { name = "graphviz" },
+]
+
 [[package]]
 name = "pydantic"
 version = "2.11.5"
@@ -428,11 +442,11 @@ name = "research"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "openai-agents" },
+    { name = "openai-agents", extra = ["viz"] },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "openai-agents", specifier = ">=0.0.17" }]
+requires-dist = [{ name = "openai-agents", extras = ["viz"], specifier = ">=0.0.17" }]
 
 [[package]]
 name = "sniffio"
