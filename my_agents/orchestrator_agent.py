@@ -9,7 +9,7 @@ orchestrator_agent = Agent(
     "You will explain each issue found in one line or sentence.",
     tools=[read_source_file,
            security_agent.as_tool(
-               tool_name="Security Agent",
+               tool_name="Security_Agent",
                tool_description="Do security analysis of the code and explain each issue found in one line or sentence."),
            ]
 )
