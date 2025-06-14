@@ -1,4 +1,4 @@
-from my_agents.code_analyser import code_analyser
+from my_agents.orchestrator_agent import orchestrator_agent
 from agents import Runner
 import asyncio
 from dotenv import load_dotenv
@@ -8,8 +8,8 @@ load_dotenv()
 async def main():
     file_path = "sample.py"
     result = await Runner.run(
-        starting_agent=code_analyser,
-        input=f"read_source_file file_path='{file_path}' and give review"
+        starting_agent=orchestrator_agent,
+        input="Use the orchestrator agent and give me output that you get from it. File path for read_source_file tool is 'sample.py'.",
     )
     print(result.final_output)
 

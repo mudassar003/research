@@ -1,7 +1,7 @@
 from agents import Agent
 from tools.security_tools import check_security
 
-security_analyser = Agent(
+security_agent = Agent(
     name="Security Analyser",
     instructions="You are a security expert. You will use tool check_security to analyze the security " \
     "and then will explain each issue found  in one line or sentencce.",
