@@ -1,5 +1,5 @@
 from agents import Agent
-from tools.file_tools import read_source_file  # import the actual decorated function
+from my_tools.file_tools import read_source_file  # import the actual decorated function
 
 code_analyser = Agent(
     name="Code analyser agent",

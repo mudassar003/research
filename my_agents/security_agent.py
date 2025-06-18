@@ -1,5 +1,5 @@
 from agents import Agent
-from tools.security_tools import check_security
+from my_tools.security_tools import check_security
 
 security_agent = Agent(
     name="Security Analyser",
