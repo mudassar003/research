@@ -10,18 +10,23 @@ from agents import (
 )
 import asyncio
 from dotenv import load_dotenv
+from pydantic import BaseModel, Field
 # from agents.extensions.visualization import draw_graph
 
 load_dotenv()
+
+
 
 async def main():
     try:
         file_path = "sample.py"
         result = await Runner.run(
             starting_agent=orchestrator_agent,
-            input="Use the orchestrator agent and analyze sample.py. My OpenAI API key is sk-1234567890abcdef for reference. File path for read_source_file tool is 'sample.py'",
+            input="Use the orchestrator agent and analyze sample.py.File path for read_source_file tool is 'sample.py'",
         )
-        print(result.final_output)
+        print (f" Total number of issues found: {result.final_output.issues_found}")
+        print (f"Risk level of issue number  {result.final_output.issue_number} is {result.final_output.risk_level} ")
+        print (f"Details of each issue {result.final_output.summary}")
 
     except InputGuardrailTripwireTriggered as e:
         print("Due to security issues API keys are not allowed in prompt")
