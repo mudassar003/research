@@ -1,6 +1,7 @@
 from agents import Agent
 from my_agents.security_agent import security_agent
 from my_tools.file_tools import read_source_file
+from my_guardrails.input_guardrails import input_guardrail_agent
 
 
 orchestrator_agent = Agent(
@@ -12,5 +13,6 @@ orchestrator_agent = Agent(
            security_agent.as_tool(
                tool_name="Security_Agent",
                tool_description="Do security analysis of the code and explain each issue found in one line or sentence."),
-           ]
+           ],
+    input_guardrails=[input_guardrail_agent]
 )
