@@ -1,4 +1,5 @@
 # sample.py - A deliberately problematic Python file
+OPENAI_API_KEY = "sk-1234567890abcdef1234567890abcdef"
 def calculateTotalPrice(items, tax_rate, discount):
     total = 0
     for i in items:
