@@ -3,11 +3,16 @@ from my_agents.orchestrator_agent import orchestrator_agent
 from agents import (
     InputGuardrailTripwireTriggered,
     Runner,
+    RunConfig
 )
 import asyncio
 from dotenv import load_dotenv
 
 load_dotenv()
+
+config = RunConfig(
+     workflow_name="My custom workflow"
+)
 
 
 async def main():
@@ -36,6 +41,8 @@ async def main():
         result = await Runner.run(
             starting_agent=orchestrator_agent,
             input=f"Analyze this code content: {user_code_input}",
+            run_config=config
+            
         )
         
         print(f"Total number of issues found: {result.final_output.issues_found}")

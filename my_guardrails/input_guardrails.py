@@ -42,7 +42,6 @@ async def input_guardrail_agent(
     """
     input guardrail to check api reference in user input
     """
-
     result = await Runner.run(api_key_guardrail_agent, input, context=ctx.context)
     return GuardrailFunctionOutput(
         output_info=result.final_output,
