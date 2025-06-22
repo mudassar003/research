@@ -7,6 +7,9 @@ from agents import (
 )
 import asyncio
 from dotenv import load_dotenv
+from agents import enable_verbose_stdout_logging
+
+enable_verbose_stdout_logging()
 
 load_dotenv()
 
@@ -38,7 +41,7 @@ async def main():
         
     result = await Runner.run(
         starting_agent=orchestrator_agent,
-        input=f"Analyze this code content: {user_code_input}",
+        input=f"do security analysis of code {user_code_input}",
         run_config=config
         
     )

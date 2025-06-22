@@ -3,10 +3,8 @@ from pydantic import BaseModel
 from agents import (
     Agent,
     GuardrailFunctionOutput,
-    InputGuardrailTripwireTriggered,
     RunContextWrapper,
     Runner,
-    TResponseInputItem,
     input_guardrail,
 )
 
