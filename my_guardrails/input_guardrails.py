@@ -14,7 +14,24 @@ class ApiKeyCheckOutput(BaseModel):
 
 api_key_guardrail_agent = Agent(
     name="Api key guardrail",
-    instructions="check if the user input have api key references",
+    instructions="""
+                You are checking for API keys or secrets in code/text.
+                
+                Look for these common patterns:
+                1. Strings starting with 'sk-' (OpenAI keys)
+                2. Variables named api_key, secret, token with values
+                3. Environment variables like OPENAI_API_KEY with values
+                4. Any obvious credential assignments
+                
+                Examples that should trigger:
+                - api_key = "sk-1234567890"
+                - SECRET_KEY = "mysecret" 
+                - OPENAI_API_KEY: "value"
+                - api_key = 123456sk
+                
+                Return contains_api_key=True if you find ANY of these patterns.
+                Be conservative - if in doubt, flag it as containing an API key.
+    """,
     output_type=ApiKeyCheckOutput
 )
 
