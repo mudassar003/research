@@ -22,7 +22,7 @@ async def main():
     try:
         # Example: Using direct code content from user input
         user_code_input = '''
-                        api_key=sk-1234567890abcdef
+                        
                 def calculateTotalPrice(items, tax_rate, discount):
                     total = 0
                     for i in items:
@@ -45,9 +45,7 @@ async def main():
             
         )
         
-        print(f"Total number of issues found: {result.final_output.issues_found}")
-        print(f"Risk level of issue number {result.final_output.issue_number} is {result.final_output.risk_level}")
-        print(f"Details of each issue: {result.final_output.summary}")
+        print(result.final_output)
 
     except InputGuardrailTripwireTriggered as e:
         print("Due to security issues API keys are not allowed in prompt")
