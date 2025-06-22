@@ -38,15 +38,17 @@ async def main():
                 result = eval(user_input)  # Dangerous!
                 return result
     """
-        
-    result = await Runner.run(
-        starting_agent=orchestrator_agent,
-        input=f"do security analysis of code {user_code_input}",
-        run_config=config
-        
+    try:   
+        result = await Runner.run(
+            starting_agent=orchestrator_agent,
+            input=f"do security analysis of code {user_code_input}",
+            run_config=config
     )
-        
-    print(result.final_output)
+        print(result.final_output)
+    except InputGuardrailTripwireTriggered:
+        return f"we cant help"
+
+
 
 
 

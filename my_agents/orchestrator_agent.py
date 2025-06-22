@@ -20,5 +20,6 @@ orchestrator_agent = Agent(
     - Do not analyze the code yourself - delegate to the appropriate specialist
     """,
     handoffs=[security_agent],
+    input_guardrails=[input_guardrail_agent]
 )
 
