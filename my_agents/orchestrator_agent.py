@@ -8,6 +8,4 @@ orchestrator_agent = Agent(
         send code to suitble agent based on user prompt for security or quality analysis
     """,
     handoffs=[security_agent],
-    input_guardrails=[input_guardrail_agent],
-
 )

@@ -1,3 +1,4 @@
+# my_guardrails/input_guardrails.py
 from pydantic import BaseModel
 from agents import (
     Agent,
@@ -8,12 +9,15 @@ from agents import (
     TResponseInputItem,
     input_guardrail,
 )
+
 class ApiKeyCheckOutput(BaseModel):
     contains_api_key: bool
     reasoning: str
 
+# Use gpt-4o-mini for fast, cheap guardrail
 api_key_guardrail_agent = Agent(
     name="Api key guardrail",
+    model="gpt-4o-mini",  # Fast/cheap model as per documentation
     instructions="""
                 You are checking for API keys or secrets in code/text.
                 
